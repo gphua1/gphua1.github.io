@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spelling Game</title>
+</head>
+<body>
+  <h1>Welcome to the Spelling Game</h1>
+  <form id="spelling-form">
+    <label for="spelling-input">Enter the spelling:</label>
+    <input type="text" id="spelling-input">
+    <button type="submit" id="submit-button">Submit</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    //List of spelling words
+    var spellingWords = ["example", "javascript", "html", "css", "programming"];
+    var currentWordIndex = 0;
+    var score = 0;
+    
+    //listen for form submit
+    document.getElementById("spelling-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      var userSpelling = document.getElementById("spelling-input").value;
+      if (userSpelling === spellingWords[currentWordIndex]) {
+        document.getElementById("result").innerHTML = "Correct!";
+        score++;
+      } else {
+        document.getElementById("result").innerHTML = "Incorrect. Try again.";
+      }
+      currentWordIndex++;
